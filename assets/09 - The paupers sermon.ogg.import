@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c3wiu8ax7r7m3"
+path="res://.godot/imported/09 - The paupers sermon.ogg-f51884cb58f425c8c8dda551ab8def40.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/09 - The paupers sermon.ogg"
+dest_files=["res://.godot/imported/09 - The paupers sermon.ogg-f51884cb58f425c8c8dda551ab8def40.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3]
+
+[sub_resource type="SphereShape3D" id="1"]
+radius = 0.75
+
+[sub_resource type="SphereMesh" id="2"]
+radius = 0.75
+height = 1.5
+
+[node name="Bumper" type="StaticBody3D" groups=["bumper"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("2")

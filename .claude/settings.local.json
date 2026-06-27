@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/lando/.claude/projects/c--Users-lando-Documents-galanovaroll/memory/**)"
+    ]
+  }
+}

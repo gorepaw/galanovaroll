@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cqbj2yf7c0kmi"
+path="res://.godot/imported/05 - Voices of mire - Voices of mire.ogg-6b34f90ce6064e1db94d04ee0d8f173a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/05 - Voices of mire - Voices of mire.ogg"
+dest_files=["res://.godot/imported/05 - Voices of mire - Voices of mire.ogg-6b34f90ce6064e1db94d04ee0d8f173a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://di8kibx86dceu"
+path="res://.godot/imported/07 - What comes after the dark.ogg-22e9c762d5a9b5a7d1e807f395b3e051.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/07 - What comes after the dark.ogg"
+dest_files=["res://.godot/imported/07 - What comes after the dark.ogg-22e9c762d5a9b5a7d1e807f395b3e051.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

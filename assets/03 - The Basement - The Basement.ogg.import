@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://kkscbcv1mah1"
+path="res://.godot/imported/03 - The Basement - The Basement.ogg-2bc2785528d337314dfbc849500322dd.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/03 - The Basement - The Basement.ogg"
+dest_files=["res://.godot/imported/03 - The Basement - The Basement.ogg-2bc2785528d337314dfbc849500322dd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,174 @@
+[gd_scene load_steps=20 format=3]
+
+[ext_resource type="Script" path="res://scenes/world/Level.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/ui/HUD.tscn" id="2"]
+[ext_resource type="Script" path="res://scripts/systems/InputSystem.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/systems/CollisionSystem.gd" id="4"]
+[ext_resource type="Script" path="res://scripts/systems/EnergySystem.gd" id="5"]
+[ext_resource type="Script" path="res://scripts/systems/RuneSystem.gd" id="6"]
+[ext_resource type="Script" path="res://scripts/systems/PathTracker.gd" id="7"]
+[ext_resource type="Script" path="res://scripts/systems/AlignmentTracker.gd" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/player/Ball.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/world/RuneNode.tscn" id="10"]
+[ext_resource type="PackedScene" path="res://scenes/world/Bumper.tscn" id="11"]
+[ext_resource type="PackedScene" path="res://scenes/world/Portal.tscn" id="12"]
+
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(70, 0.5, 70)
+
+[sub_resource type="BoxMesh" id="2"]
+size = Vector3(70, 0.5, 70)
+
+[sub_resource type="BoxShape3D" id="3"]
+size = Vector3(0.5, 3, 70)
+
+[sub_resource type="BoxMesh" id="4"]
+size = Vector3(0.5, 3, 70)
+
+[sub_resource type="BoxShape3D" id="5"]
+size = Vector3(4, 4, 4)
+
+[sub_resource type="BoxMesh" id="6"]
+size = Vector3(4, 4, 4)
+
+[sub_resource type="StandardMaterial3D" id="7"]
+albedo_color = Color(0.7, 0.4, 0.4, 1)
+metallic = 0.4
+roughness = 0.6
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1")
+enabled_runes = Array[int]([6])
+level_id = 6
+
+[node name="Systems" type="Node" parent="."]
+
+[node name="InputSystem" type="Node" parent="Systems"]
+script = ExtResource("3")
+
+[node name="CollisionSystem" type="Node" parent="Systems"]
+script = ExtResource("4")
+
+[node name="EnergySystem" type="Node" parent="Systems"]
+script = ExtResource("5")
+
+[node name="RuneSystem" type="Node" parent="Systems"]
+script = ExtResource("6")
+
+[node name="PathTracker" type="Node" parent="Systems"]
+script = ExtResource("7")
+
+[node name="AlignmentTracker" type="Node" parent="Systems"]
+script = ExtResource("8")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+
+[node name="Ball" parent="." instance=ExtResource("9")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -30)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("2")
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="WallE" type="StaticBody3D" groups=["wall"] parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.25, 1.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/WallE"]
+shape = SubResource("3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/WallE"]
+mesh = SubResource("4")
+
+[node name="WallW" type="StaticBody3D" groups=["wall"] parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.25, 1.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/WallW"]
+shape = SubResource("3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/WallW"]
+mesh = SubResource("4")
+
+[node name="WallN" type="StaticBody3D" groups=["wall"] parent="Walls"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.5, -35.25)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/WallN"]
+shape = SubResource("3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/WallN"]
+mesh = SubResource("4")
+
+[node name="WallS" type="StaticBody3D" groups=["wall"] parent="Walls"]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 1.5, 35.25)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/WallS"]
+shape = SubResource("3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/WallS"]
+mesh = SubResource("4")
+
+[node name="HeavyObject" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 6)
+mass = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeavyObject"]
+shape = SubResource("5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HeavyObject"]
+mesh = SubResource("6")
+surface_material_override/0 = SubResource("7")
+
+[node name="Bumpers" type="Node3D" parent="."]
+
+[node name="Bumper1" parent="Bumpers" instance=ExtResource("11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.75, -12)
+
+[node name="Bumper2" parent="Bumpers" instance=ExtResource("11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.75, -12)
+
+[node name="Bumper3" parent="Bumpers" instance=ExtResource("11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 0.75, 2)
+
+[node name="Bumper4" parent="Bumpers" instance=ExtResource("11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0.75, 2)
+
+[node name="Bumper5" parent="Bumpers" instance=ExtResource("11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.75, 18)
+
+[node name="Bumper6" parent="Bumpers" instance=ExtResource("11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.75, 18)
+
+[node name="RuneNodes" type="Node3D" parent="."]
+
+[node name="RuneNode1" parent="RuneNodes" instance=ExtResource("10")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -22, 1.5, 12)
+rune_id = 6
+
+[node name="RuneNode2" parent="RuneNodes" instance=ExtResource("10")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 22, 1.5, 12)
+rune_id = 6
+
+[node name="RuneNode3" parent="RuneNodes" instance=ExtResource("10")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -22, 1.5, -10)
+rune_id = 6
+
+[node name="RuneNode4" parent="RuneNodes" instance=ExtResource("10")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 22, 1.5, -10)
+rune_id = 6
+
+[node name="Portals" type="Node3D" parent="."]
+
+[node name="ExitPortal" parent="Portals" instance=ExtResource("12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 30)
+target_scene = "res://scenes/world/Hub.tscn"
+required_rune_id = 6
+
+[node name="HUD" parent="." instance=ExtResource("2")]
